@@ -34,7 +34,6 @@ const readDataBase = async (path) => {
 router.get("/", async (req, res, next) => {
   try {
     const catalogue = await readDataBase("houses.json");
-    console.log(req.body);
     if (catalogue) {
       res.send(catalogue);
     } else
