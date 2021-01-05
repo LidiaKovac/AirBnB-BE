@@ -100,7 +100,7 @@ router.post(
   "/",
   [
     check("address").exists().withMessage("mandatory field"),
-    check("title", "description", "info", "house", "facilities")
+    check("title", "description", "info", "house", "facilities", "host", "id") //in the end I went for the client side uniqid
       .exists()
       .withMessage("mandatory field"),
     check("price", "rooms")
@@ -118,13 +118,11 @@ router.post(
         console.log(err.message);
         err.httpStatusCode = 400;
         next(err);
-      } else {
-        console.log(req);
+      } else {;
         const catalogue = await readDataBase("houses.json");
 
         const newHouse = {
           ...req.body,
-          id: uniqid(),
           createdAt: new Date(),
           modifiedAt: new Date(),
         };
@@ -143,15 +141,17 @@ router.post(
 );
 router.post(
   "/:location/:id/upload",
-  cloudinaryMulter.array('image', 5),
+  cloudinaryMulter.single('image'),
   async (req, res, next) => {
+    console.log(req.body)
     try {
       const files = await readDataBase("../files/files.json");
-      req.files.forEach((image, index)=>
       addImage = {
         ...req.body,
-        img: req.files[index].path,
-      })
+        img: req.body,
+        id: req.params.id
+      }
+      
       
       files.push(addImage)
 

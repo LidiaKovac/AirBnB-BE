@@ -502,5 +502,26 @@
         "id": "5441xkby0kjhk95py",
         "createdAt": "2021-01-03T20:01:30.933Z",
         "modifiedAt": "2021-01-05T12:53:45.880Z"
+    },
+    
+    {
+        "address": {
+            "street": "29-43 Southside Rd",
+            "city": "inverness",
+            "zip code": "IV2 4XA",
+            "country": "Scotland"
+        },
+        "title": "The pretty green house",
+        "description": "Green house with green doors and interiors and plenty of plants. ",
+        "price": "44",
+        "rooms": "6",
+        "info": "",
+        "house": "House",
+        "facilities": "En-suite bathroom, big kitchen with island counters",
+        "host": "Hanna",
+        "isBooked": false,
+        "id": "kjk96fet",
+        "createdAt": "2021-01-05T17:16:02.961Z",
+        "modifiedAt": "2021-01-05T17:16:02.961Z"
     }
 ]
