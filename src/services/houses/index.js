@@ -9,6 +9,7 @@ const { writeFile } = require("fs-extra");
 const { join } = require("path");
 const { readJSON, writeJSON } = require("fs-extra");
 const { check, validationResult } = require("express-validator");
+const sgMail = require("@sendgrid/mail")
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
@@ -78,9 +79,9 @@ router.get("/:location/:id", async (req, res, next) => {
 {
     {
     "address": {
-        "street": "Piazza De Ferrari",
+        "street": "VIa Segur",
         "city": "Genova",
-        "zip code": 16100,
+        "zip code": 20153,
         "country": "Italy",
         "latitude": "44.407311404724986",
         "longitude": "8.934036926941353"
@@ -143,14 +144,16 @@ router.post(
 );
 router.post(
   "/:location/:id/upload",
-  cloudinaryMulter.single('image'),
+  cloudinaryMulter.array('image', 5),
   async (req, res, next) => {
     try {
       const files = await readDataBase("../files/files.json");
-      const addImage = {
+      req.files.forEach((image, index)=>
+      addImage = {
         ...req.body,
-        img: req.file.path,
-      }
+        img: req.files[index].path,
+      })
+      
       files.push(addImage)
 
       await fs.writeFileSync(
@@ -164,6 +167,27 @@ router.post(
     }
   }
 );
+
+router.post(
+  "/book", async(req,res,next) => {
+    try {
+      sgMail.setApiKey(process.env.SENDGRID_KEY)
+  
+      const msg = {
+        to: "noemiefp@live.it",
+        from: "lidia.kovac1998@gmail.com",
+        subject: "Sending with Twilio SendGrid is Fun",
+        text: "and easy to do anywhere, even with Node.js",
+        html: "<strong>and easy to do anywhere, even with Node.js</strong>",
+      }
+  
+      await sgMail.send(msg)
+      res.send(req.body)
+    } catch (error) {
+      next(error)
+    }
+  }
+)
 router.put(
   "/:location/:id",
   [
@@ -197,5 +221,16 @@ router.put(
     }
   }
 );
+router.delete(
+  '/:location/:id', async(req,res,next) => {
+    const catalogue = await readDataBase('houses.json')
+    const filterDB = catalogue.filter((house) => house.id !== req.params.id)
+    await fs.writeFileSync(
+      path.join(__dirname, 'houses.json'), 
+      JSON.stringify(filterDB)
+    )
+    res.send({filterDB})
+  }
+)
 
 module.exports = router;

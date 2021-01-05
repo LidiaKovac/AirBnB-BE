@@ -1,49 +1,8 @@
 [
-  {
-        "address": {
-            "street": "Piazza De Ferrari",
-            "city": "Genova",
-            "zip code": 16100,
-            "country": "Italy",
-            "latitude": "44.407311404724986",
-            "longitude": "8.934036926941353"
-        },
-        "title": "Wonderful House",
-        "description": "We are in the city center",
-        "price": 99,
-        "rooms": 3,
-        "info": "We have a fridge and windows",
-        "house": "apartment",
-        "facilities": "you can flush the toilet",
-        "isBooked": false,
-        "id": "5441xk1ewkjhaun8o",
-        "modifiedAt": "2021-01-03T15:47:24.136Z"
-    },
-    {
-        "address": {
-            "street": "11 Young St",
-            "city": "Inverness",
-            "zip code": "IV3 5BL",
-            "country": "Scotland",
-            "latitude": "57.476641601571096",
-            "longitude": "-4.228878850850914"
-        },
-        "title": "Blue door house",
-        "description": "A small door to an amazing city. ",
-        "price": 129,
-        "rooms": 4,
-        "info": "We are very close to the castle and the bus station. We are close to everything really, this is a small city. ",
-        "house": "apartment",
-        "facilities": "Independent entry, kettle.",
-        "isBooked": false,
-        "id": "5441xk4b0kjhk8g7d",
-        "createdAt": "2021-01-03T20:00:57.864Z",
-        "modifiedAt": "2021-01-03T20:00:57.864Z"
-    },
     {
         "address": {
             "street": "5 Kilmore Rd",
-            "city": "Drumnadrochit",
+            "city": "Inverness",
             "zip code": "IV63 6UG",
             "country": "Scotland",
             "latitude": "57.330477799640555",
@@ -70,7 +29,7 @@
             "latitude": "55.93836350329214",
             "longitude": "-3.197628466429945"
         },
-        "title": "High School houshold",
+        "title": "High School household",
         "description": "Apartment ideal for exchange students who want to live next to the James Gillespie's high school. ",
         "price": 40,
         "rooms": 5,
@@ -81,6 +40,27 @@
         "id": "5441xkg3ckjhk9x2z",
         "createdAt": "2021-01-03T20:02:06.394Z",
         "modifiedAt": "2021-01-03T20:02:06.394Z"
+    },
+    {
+        "address": {
+            "street": "11 Young St",
+            "city": "Inverness",
+            "zip code": "IV3 5BL",
+            "country": "Scotland",
+            "latitude": "57.476641601571096",
+            "longitude": "-4.228878850850914"
+        },
+        "title": "Blue door house",
+        "description": "A small door to an amazing city. ",
+        "price": 129,
+        "rooms": 4,
+        "info": "We are very close to the castle and the bus station. We are close to everything really, this is a small city. ",
+        "house": "apartment",
+        "facilities": "Independent entry, kettle.",
+        "isBooked": true,
+        "id": "5441xk4b0kjhk8g7d",
+        "createdAt": "2021-01-03T20:00:57.864Z",
+        "modifiedAt": "2021-01-04T15:23:32.424Z"
     },
     {
         "address": {
@@ -98,10 +78,30 @@
         "info": "The god winds live here",
         "house": "apartment",
         "facilities": "we have a supermarket next to here",
-        "isBooked": false,
+        "isBooked": true,
         "id": "5441xkeagkjhawucq",
         "createdAt": "2021-01-03T15:39:59.785Z",
-        "modifiedAt": "2021-01-03T15:39:59.785Z"
+        "modifiedAt": "2021-01-04T15:32:15.831Z"
+    },
+    {
+        "address": {
+            "street": "Piazza De Ferrari",
+            "city": "Genova",
+            "zip code": 16100,
+            "country": "Italy",
+            "latitude": "44.407311404724986",
+            "longitude": "8.934036926941353"
+        },
+        "title": "Wonderful House",
+        "description": "We are in the city center",
+        "price": 99,
+        "rooms": 3,
+        "info": "We have a fridge and windows",
+        "house": "apartment",
+        "facilities": "you can flush the toilet",
+        "isBooked": true,
+        "id": "5441xk1ewkjhaun8o",
+        "modifiedAt": "2021-01-04T17:29:07.351Z"
     },
     {
         "address": {
@@ -119,10 +119,365 @@
         "info": "Not really in the city center but a nice view on Genoa's best fired chicken place (reviews by the one person who goes there).",
         "house": "apartment",
         "facilities": "Windows",
-        "isBooked": false,
+        "isBooked": true,
         "id": "5441xkd4gkjhkas0b",
         "createdAt": "2021-01-03T15:39:59.785Z",
-        "modifiedAt": "2021-01-03T15:39:59.785Z"
+        "modifiedAt": "2021-01-04T17:44:22.609Z"
+    },
+    {
+        "address": {
+            "street": "Via Seguro 203",
+            "city": "Milan",
+            "zip code": 20130,
+            "country": "Italy",
+            "latitude": "45.46408417655504",
+            "longitude": "9.081037862961836"
+        },
+        "title": "Milan times ",
+        "description": "Jusat another house in milan. This is 100% overprices and I would be lying if I said this is close to university at all. ",
+        "price": 399,
+        "rooms": 3,
+        "info": "Student services, bathroom",
+        "house": "apartment",
+        "facilities": "1 bed, kitchen in closet",
+        "isBooked": false,
+        "id": "5441xkbk4kjj2x41x",
+        "modifiedAt": "2021-01-04T21:38:02.147Z"
+    },
+    {
+        "address": {
+            "street": "Via Achille Grandi, 24-15",
+            "city": "Genova",
+            "zip code": 20130,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "S.Olcese dream",
+        "description": "A nice cozy cabin in the middle of nothing.",
+        "price": 23,
+        "rooms": 3,
+        "info": "Hot water, nice cozy fireplace for the winter.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xki4wkjj386h7",
+        "createdAt": "2021-01-04T21:40:24.138Z",
+        "modifiedAt": "2021-01-04T21:40:24.138Z"
+    },
+    {
+        "address": {
+            "street": "Corso Ugo Bassi, 58",
+            "city": "Genova",
+            "zip code": 16127,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Bassi student residence",
+        "description": "Ideal for students going to the ALbergo dei poveri building of uniGe. Public transport widely available.",
+        "price": 43,
+        "rooms": 3,
+        "info": "Library close to the apartment",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkfqgkjj3bjlr",
+        "createdAt": "2021-01-04T21:43:01.118Z",
+        "modifiedAt": "2021-01-04T21:43:01.118Z"
+    },
+    {
+        "address": {
+            "street": "Via Giovanni Costanzi, 91-120",
+            "city": "Genova",
+            "zip code": 16127,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Righi",
+        "description": "Let's just say that when it will snow you will be the first to know. ",
+        "price": 53,
+        "rooms": 3,
+        "info": "Public transport and restaurants",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkjdwkjj3d74l",
+        "createdAt": "2021-01-04T21:44:18.260Z",
+        "modifiedAt": "2021-01-04T21:44:18.260Z"
+    },
+    {
+        "address": {
+            "street": "Via Coronata, 91-101",
+            "city": "Genova",
+            "zip code": 16152,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "16152",
+        "description": "Isolated and intimate place. Pretty bad place at night. I raccomend using the car if you want to live.",
+        "price": 53,
+        "rooms": 3,
+        "info": "Public transport is decent",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkengkjj3h7qf",
+        "createdAt": "2021-01-04T21:47:25.670Z",
+        "modifiedAt": "2021-01-04T21:47:25.670Z"
+    },
+    {
+        "address": {
+            "street": "Via della Santissima Trinità",
+            "city": "Genova",
+            "zip code": 16156,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Cat view",
+        "description": "APartment for those hwo need to get to the Pra harbour, either for work or for tourism.",
+        "price": 53,
+        "rooms": 3,
+        "info": "Public transport is decent",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkcr4kjj3jt1f",
+        "createdAt": "2021-01-04T21:49:26.594Z",
+        "modifiedAt": "2021-01-04T21:49:26.594Z"
+    },
+    {
+        "address": {
+            "street": "Via dell'Acciaio",
+            "city": "Genova",
+            "zip code": 16152,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Airport apartments (C)",
+        "description": "We are the closest airBnB to the GOA airport. Perfect for overnight exchanges.",
+        "price": 23,
+        "rooms": 3,
+        "info": "Public transport is decent",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xki7kkjj3lhen",
+        "createdAt": "2021-01-04T21:50:44.830Z",
+        "modifiedAt": "2021-01-04T21:50:44.830Z"
+    },
+    {
+        "address": {
+            "street": "Via Felice Maritano, 12",
+            "city": "Genova",
+            "zip code": 16159,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "The Nothing House",
+        "description": "Isolated house. Close to Lidl and small sport arena.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkbxckjj4i9gw",
+        "createdAt": "2021-01-04T22:16:14.191Z",
+        "modifiedAt": "2021-01-04T22:16:14.191Z"
+    },
+    {
+        "address": {
+            "street": "V.le Berengario",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Milan apartment",
+        "description": "Moderno house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xk4kwkjj4qku5",
+        "createdAt": "2021-01-04T22:22:42.172Z",
+        "modifiedAt": "2021-01-04T22:22:42.172Z"
+    },
+    {
+        "address": {
+            "street": "Via Fratelli Cervi",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Student modernity",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkgpkkjj4r9no",
+        "createdAt": "2021-01-04T22:23:14.339Z",
+        "modifiedAt": "2021-01-04T22:23:14.339Z"
+    },
+    {
+        "address": {
+            "street": "Via Francesco Pizzolpasso",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "South-milan reign",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkl58kjj4s34g",
+        "createdAt": "2021-01-04T22:23:52.527Z",
+        "modifiedAt": "2021-01-04T22:23:52.527Z"
+    },
+    {
+        "address": {
+            "street": "Piazzale Principessa Clotilde",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "University apartment",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkfr8kjj544av",
+        "createdAt": "2021-01-04T22:33:13.926Z",
+        "modifiedAt": "2021-01-04T22:33:13.926Z"
+    },
+    {
+        "address": {
+            "street": "Via Privata Chieti, 10",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Chieti residence",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkfy4kjj54vqh",
+        "createdAt": "2021-01-04T22:33:49.480Z",
+        "modifiedAt": "2021-01-04T22:33:49.480Z"
+    },
+    {
+        "address": {
+            "street": "Via Antonio Carnevali, 96-116",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Modernity vibes",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xkkt0kjj55suk",
+        "createdAt": "2021-01-04T22:34:32.395Z",
+        "modifiedAt": "2021-01-04T22:34:32.395Z"
+    },
+    {
+        "address": {
+            "street": "Via Giovanni Durando",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "After hours",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xk23kkjj569o5",
+        "createdAt": "2021-01-04T22:34:54.196Z",
+        "modifiedAt": "2021-01-04T22:34:54.196Z"
+    },
+    {
+        "address": {
+            "street": "Quarto Oggiaro",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Locate me! Apartments",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xk97wkjj56r30",
+        "createdAt": "2021-01-04T22:35:16.763Z",
+        "modifiedAt": "2021-01-04T22:35:16.763Z"
+    },
+    {
+        "address": {
+            "street": "Via Bovisasca, 22",
+            "city": "Milan",
+            "zip code": 20145,
+            "country": "Italy",
+            "latitude": "44.48608883348777",
+            "longitude": "8.971087862327476"
+        },
+        "title": "Pizza place",
+        "description": "Modern house.",
+        "price": 73,
+        "rooms": 3,
+        "info": "Public transport is horrible tbh.",
+        "house": "apartment",
+        "facilities": "3 beds, 2 bathrooms",
+        "isBooked": false,
+        "id": "5441xk4ygkjj572id",
+        "createdAt": "2021-01-04T22:35:31.572Z",
+        "modifiedAt": "2021-01-04T22:35:31.572Z"
     }
-    
 ]

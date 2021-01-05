@@ -9,4 +9,9 @@ const { check, validationResult } = require("express-validator");
 
 const router = express.Router();
 
+//router.get('/:id')
+//router.post("/:id")
+//router.delete("/:revid")
+//dividere id casa da id review, 
+
 module.exports = router;
