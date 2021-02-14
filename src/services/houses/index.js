@@ -102,6 +102,26 @@ const msg = {
   text: 'You booked a house!',
   html: '<strong>You booked a house!</strong>',
   //add a PDF here as an attachment
+//   const webPage = await browser.newPage();
+
+// const url = "https://livecodestream.dev/post";
+
+// await webPage.goto(url, {
+//     waitUntil: "networkidle0"
+// });
+// await webPage.pdf({
+//   printBackground: true,
+//   path: "webpage.pdf",
+//   format: "Letter",
+//   margin: {
+//       top: "20px",
+//       bottom: "40px",
+//       left: "20px",
+//       right: "20px"
+//   }
+// });
+
+// await browser.close();
 }
 sgMail
   .send(msg)
