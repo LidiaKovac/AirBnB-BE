@@ -29,9 +29,9 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.ARRAY(DataTypes.STRING),
         allowNull: true,
       },
-      book_ids: {
-        type: DataTypes.ARRAY(DataTypes.INTEGER),
-        allowNull: true,
+      img: {
+        type: DataTypes.STRING,
+        allowNull: true
       },
       type: {
         type: DataTypes.STRING,

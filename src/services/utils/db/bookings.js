@@ -8,13 +8,13 @@ module.exports = (sequelize, DataTypes) => {
         autoIncrement: true,
       },
       dateStart: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
       },
       dateEnd: {
-        type: DataTypes.STRING,
+        type: DataTypes.DATE,
       }
     },
-    { timestamps: true }
+    { timestamps: false }
   );
   
   Booking.associate = (models) => {

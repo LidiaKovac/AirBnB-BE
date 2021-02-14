@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   );
   Reviews.associate = (models) => {
     Reviews.belongsTo(models.House);
-    //Reviews.belongsToMany(models.Question, {through: "QuestionSets" });
+    
   };
   return Reviews;
 };
