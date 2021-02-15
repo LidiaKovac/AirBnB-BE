@@ -15,6 +15,7 @@ const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const users = await User.findAll();
+    console.log(users)
     users.length > 0 ? res.send(users) : res.send(404);
   } catch (error) {
     next(error);

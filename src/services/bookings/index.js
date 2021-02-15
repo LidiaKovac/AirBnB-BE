@@ -1,6 +1,7 @@
 const express = require("express");
-const { Booking } = require("../utils/db");
+const { Booking, User, House } = require("../utils/db");
 const sgMail = require("@sendgrid/mail");
+const moment = require('moment')
 const router = express.Router();
 
 router.get("/:bookid", async (req, res, next) => {
@@ -22,8 +23,7 @@ router.post("/:houseid/:userid", async (req, res, next) => {
       userId: req.params.userid,
       houseId: req.params.houseid,
     });
-    console.log(booking[0].dataValues);
-    const bookData = await booking[0].dataValues;
+    const bookData = await booking.dataValues;
     const user = await User.findAll({
       where: {
         id: bookData.userId,
@@ -34,16 +34,16 @@ router.post("/:houseid/:userid", async (req, res, next) => {
         id: bookData.houseId,
       },
     });
-    let startDate = moment(booking[0].dataValues.dateStart);
-    let endDate = moment(booking[0].dataValues.dateEnd);
-    let nightsNum = endDate.diff(startDate);
+    let startDate = moment(booking.dataValues.dateStart);
+    let endDate = moment(booking.dataValues.dateEnd);
+    let nightsNum = endDate.diff(startDate, 'days');
     console.log(nightsNum);
     const sgMail = require("@sendgrid/mail");
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
     const msg = {
       to: user[0].dataValues.email,
       from: "lidia.kovac1998@gmail.com",
-      subject: `Thank you for booking ${house.title}`,
+      subject: `Thank you for booking ${house[0].dataValues.title}`,
       //text: ``,
       html: `<!DOCTYPE html>
       <html lang="en">
@@ -67,11 +67,9 @@ router.post("/:houseid/:userid", async (req, res, next) => {
       }! </h1>
             <p>Here is your booking details: <br/>
               <strong> House: </strong>${house[0].dataValues.title}. <br/>
-      <strong>Dates:</strong> From ${startDate.format(
-        "DD/MM/YY"
-      )} to ${endDate.format("DD/MM/YY")}. (${nightsNum} nights) <br/>
+      <strong>Dates:</strong> From ${startDate} to ${endDate}. (${nightsNum} nights) <br/>
       <strong>Price:</strong> ${nightsNum * house[0].dataValues.price} $ </p>
-      Here is your booking id: ${booking[0].dataValues.id}
+      Here is your booking id: ${booking.dataValues.id}
         </body>
       </html>
       `,
@@ -79,7 +77,7 @@ router.post("/:houseid/:userid", async (req, res, next) => {
     sgMail
       .send(msg)
       .then(() => {
-        res.status(200).send("Email sent!" + booking);
+        res.status(200).send("Email sent!");
       })
       .catch((error) => { //email catch
         console.error(error.response.body);
@@ -87,6 +85,7 @@ router.post("/:houseid/:userid", async (req, res, next) => {
   } catch (error) { //try block 
     next(error);
   }
+  res.send(201)
 });
 
 router.put("/:bookid", async (req, res, next) => {

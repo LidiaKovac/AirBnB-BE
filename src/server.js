@@ -5,7 +5,6 @@ const endpoints = require('express-list-endpoints')
 
 const housesRoute = require('./services/houses')
 const reviewsRoute = require('./services/reviews')
-const fileRoute = require('./services/files')
 const bookingsRoute = require ('./services/bookings')
 const usersRoute = require ('./services/users')
 
@@ -28,7 +27,6 @@ const {
 
 server.use('/houses', housesRoute)
 server.use('/reviews', reviewsRoute)
-server.use('/files', fileRoute )
 server.use('/booking', bookingsRoute)
 server.use('/user', usersRoute)
 

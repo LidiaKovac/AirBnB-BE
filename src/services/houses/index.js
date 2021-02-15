@@ -1,21 +1,10 @@
 const express = require("express");
-const moment = require("moment");
 const multer = require("multer");
 
 const cloudinary = require("../cloudinary");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const { Sequelize } = require("sequelize");
 
-const { Booking, House, User } = require("../../services/utils/db");
-const sequelize = new Sequelize(
-  process.env.PGDATABASE,
-  process.env.PGUSER,
-  process.env.PGPASSWORD,
-  {
-    host: process.env.PGHOST,
-    dialect: "postgres",
-  }
-);
+const { House } = require("../../services/utils/db");
 
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
@@ -44,12 +33,17 @@ router.get("/", async (req, res, next) => {
 
 router.get("/:location", async (req, res, next) => {
   //search by city
+  const capitalize = (string) => {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
+  
   try {
-    const catalogue = await findAll({
+    const catalogue = await House.findAll({
       where: {
-        city: req.params.location,
+        city: capitalize(req.params.location),
       },
     });
+    
     if (catalogue) {
       res.status(201).send(catalogue);
     } else
@@ -63,7 +57,7 @@ router.get("/:location", async (req, res, next) => {
 });
 router.get("/:location/:id", async (req, res, next) => {
   try {
-    const house = await findAll({
+    const house = await House.findAll({
       where: {
         id: req.params.id,
       },
