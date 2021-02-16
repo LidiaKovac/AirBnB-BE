@@ -30,5 +30,6 @@ module.exports = (sequelize, DataTypes) => {
     Users.hasMany(models.Review);
     Users.hasMany(models.House);
   };
+  
   return Users;
 };

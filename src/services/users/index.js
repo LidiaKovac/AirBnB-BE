@@ -3,6 +3,8 @@ const { User } = require("../utils/db");
 const multer = require("multer");
 const cloudinary = require("../cloudinary");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const { admin, basic } = require("../auth") 
+//?? on each endpoint there can be up tp two auth middlewares: basic and admin. If the admin mw is present, that is an admin only action ??
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
@@ -12,7 +14,7 @@ const storage = new CloudinaryStorage({
 const cloudinaryMulter = multer({ storage: storage });
 const router = express.Router();
 
-router.get("/", async (req, res, next) => {
+router.get("/", basic, admin, async (req, res, next) => {
   try {
     const users = await User.findAll();
     console.log(users)
@@ -21,7 +23,7 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
-router.get("/:userid", async (req, res, next) => {
+router.get("/:userid", basic, async (req, res, next) => {
   try {
     const user = await User.findAll({
       where: {
@@ -49,7 +51,7 @@ router.post(
 );
 
 
-router.put("/:userid", async (req, res, next) => {
+router.put("/:userid", basic, async (req, res, next) => {
   try {
     const editUser = await User.update(req.body, {
       where: {
@@ -63,7 +65,7 @@ router.put("/:userid", async (req, res, next) => {
   }
 });
 
-router.delete("/:userid", async (req, res, next) => {
+router.delete("/:userid", basic, async (req, res, next) => {
   try {
     let user = await User.destroy({
       where: {
