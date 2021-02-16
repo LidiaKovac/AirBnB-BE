@@ -15,13 +15,23 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      isHost: {
-        type: DataTypes.BOOLEAN,
+      role: {
+        type: DataTypes.ENUM('admin', 'basic'),
         allowNull: false,
       },
       email: {
         type: DataTypes.STRING,
       },
+      password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate:{
+          min:{
+              args:[8],
+              msg:"Minimum 8 characters required in password"
+          }
+      }
+      }
     },
     { timestamps: false }
   );

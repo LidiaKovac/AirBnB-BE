@@ -1,5 +1,6 @@
 const express = require("express");
 const { User } = require("../utils/db");
+const bcrypt = require('bcryptjs')
 const multer = require("multer");
 const cloudinary = require("../cloudinary");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
@@ -36,12 +37,26 @@ router.get("/:userid", basic, async (req, res, next) => {
   }
 });
 
+router.get('/login/me', basic, async(req,res,next)=> {
+  try {
+    res.send(req.user)
+  } catch(e) {
+    next(e)
+  }
+})
+// UserSchema.pre("save", async function (next) { I MOVED THIS STEP IN THE POST ENDPOINT
+//   const user = this
+//   if (user.isModified("password")) {
+//     user.password = await bcrypt.hash(user.password, 10)
+//   }
+//   next()
+// })
 router.post(
   "/",
   cloudinaryMulter.single("user-image"),
   async (req, res, next) => {
     try {
-      const newUser = await User.create({ ...req.body, img: req.file.path });
+      const newUser = await User.create({ ...req.body, password: await bcrypt.hash(req.body.password, 10), img: req.file.path }); //not sure
       res.status(201).send({ newUser });
     } catch (error) {
       console.log(error);
@@ -53,7 +68,7 @@ router.post(
 
 router.put("/:userid", basic, async (req, res, next) => {
   try {
-    const editUser = await User.update(req.body, {
+    const editUser = await User.update(req.body.password ? {...req.body, password: await bcrypt.hash(req.body.password, 10)} : {...req.body}, {
       where: {
         id: req.params.userid,
       },
