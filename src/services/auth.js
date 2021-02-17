@@ -9,38 +9,37 @@ const basicUserMW = async (req, res, next) => {
     error.httpStatusCode = 401;
     next(error);
   } else {
-    const [email, password] = await atob(
+    //if an auth is provided
+    const [email, password] = atob(
       req.headers.authorization.split(" ")[1] // ???
     ).split(":");
-    const user = await User.findAll({
+    const userData = await User.findAll({
       where: {
         email: email,
       },
     });
-    //descontructing the object to only send "safe" info:
-    const sendUser = {
-        name: user[0].name,
-        last_name: user[0].last_name,
-        email: user[0].email,
-      };
+    const user = userData[0].dataValues;
     if (user) {
-      const isMatch = await bcrypt.compare(password, user[0].password);
-      if (isMatch) return res.send(sendUser); //return didn't give back any response
-      else return null;
-    } else return null;
+      //if 1
+      console.log("user exists");
+      const isMatch = await bcrypt.compare(password, user.password);
+      console.log(isMatch);
+      if (isMatch) { //i had to cut some line from the code showed to class returning null would stop my function from going on in compiling
+        req.user = user;
+      }
+    }
+    if (!user) {
+      const error = new Error("Wrong credentials provided");
+      error.httpStatusCode = 401;
+      next(error);
+    } else {
+    }
+    next();
   }
-  if (!user) {
-    const error = new Error("Wrong credentials provided");
-    error.httpStatusCode = 401;
-    next(error);
-  } else {
-    req.user = user;
-  }
-
-  next();
 };
 
 const adminMW = async (req, res, next) => {
+  console.log(req.user);
   if (req.user && req.user.role === "admin") {
     next();
   } else {

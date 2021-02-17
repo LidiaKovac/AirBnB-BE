@@ -15,7 +15,7 @@ const storage = new CloudinaryStorage({
 const cloudinaryMulter = multer({ storage: storage });
 const router = express.Router();
 
-router.get("/", basic, admin, async (req, res, next) => {
+router.get("/", basic, admin,  async (req, res, next) => {
   try {
     const users = await User.findAll();
     console.log(users)

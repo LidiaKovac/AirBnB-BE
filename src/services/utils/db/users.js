@@ -15,6 +15,10 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      // img : {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       role: {
         type: DataTypes.ENUM('admin', 'basic'),
         allowNull: false,
