@@ -4,8 +4,9 @@ const bcrypt = require('bcryptjs')
 const multer = require("multer");
 const cloudinary = require("../cloudinary");
 const { CloudinaryStorage } = require("multer-storage-cloudinary");
-const { admin, basic } = require("../auth") 
-//?? on each endpoint there can be up tp two auth middlewares: basic and admin. If the admin mw is present, that is an admin only action ??
+const { admin, auth } = require("../auth/auth"); 
+const {findByCredentials, authentication} = require("../auth/tools");
+
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
@@ -15,7 +16,7 @@ const storage = new CloudinaryStorage({
 const cloudinaryMulter = multer({ storage: storage });
 const router = express.Router();
 
-router.get("/", basic, admin, async (req, res, next) => {
+router.get("/", auth, admin, async (req, res, next) => {
   try {
     const users = await User.findAll();
     console.log(users)
@@ -24,7 +25,7 @@ router.get("/", basic, admin, async (req, res, next) => {
     next(error);
   }
 });
-router.get("/:userid", basic, async (req, res, next) => {
+router.get("/:userid", auth, async (req, res, next) => {
   try {
     const user = await User.findAll({
       where: {
@@ -37,26 +38,51 @@ router.get("/:userid", basic, async (req, res, next) => {
   }
 });
 
-router.get('/login/me', basic, async(req,res,next)=> {
+
+router.post('/login/me', async(req,res,next)=> { //no mw because this has to be open to all
+  //deleting the basic mw means I now have to store the findByCredential somewhere: it's in the tools file. 
   try {
-    res.send(req.user)
-  } catch(e) {
+    const {email, password} = req.body
+    const userData = await findByCredentials(req, email, password)
+    const user = userData[0].dataValues
+    console.log(user)
+    const tokens = await authentication(user) //fires authentication function NOT THE MIDDLEWARE! 
+    res.send(tokens)
+  }catch (e) {
     next(e)
   }
 })
-// UserSchema.pre("save", async function (next) { I MOVED THIS STEP IN THE POST ENDPOINT
-//   const user = this
-//   if (user.isModified("password")) {
-//     user.password = await bcrypt.hash(user.password, 10)
-//   }
-//   next()
-// })
+
+router.post('/logout/me', auth, async(req,res,next) => { //logs out from current device
+  try {
+    const user = req.user[0].dataValues
+    const newUser = await User.update({refreshTokens: user.refreshTokens.filter((tkn)=> tkn !== req.body.refreshTokens )}, {where: { //this deletes all the refresh tokens and leaves current one (why?)
+      id: user.id
+    }})
+    res.send(newUser[0] === 1 ? 'Logged out' : 'there was a problem')
+  }catch(e) {
+    next(e)
+  }
+})
+
+router.post('/logout/all', auth, async(req,res,next)=> { //logs out from all devices
+  try {
+    const user = req.user[0].dataValues
+    const newUser = await User.update({refreshTokens: []}, {where: {
+      id: user.id
+    }})
+    res.send(newUser[0] === 1 ? 'Logged out' : 'there was a problem')
+  }catch(e) {
+    next(e)
+  }
+})
+
 router.post(
   "/",
   cloudinaryMulter.single("user-image"),
   async (req, res, next) => {
     try {
-      const newUser = await User.create({ ...req.body, password: await bcrypt.hash(req.body.password, 10), img: req.file.path }); //not sure
+      const newUser = await User.create({ ...req.body, password: await bcrypt.hash(req.body.password, 10), img: req.file.path, refreshTokens: [] }); //not sure
       res.status(201).send({ newUser });
     } catch (error) {
       console.log(error);
@@ -66,7 +92,7 @@ router.post(
 );
 
 
-router.put("/:userid", basic, async (req, res, next) => {
+router.put("/:userid", auth, async (req, res, next) => {
   try {
     const editUser = await User.update(req.body.password ? {...req.body, password: await bcrypt.hash(req.body.password, 10)} : {...req.body}, {
       where: {
@@ -80,7 +106,7 @@ router.put("/:userid", basic, async (req, res, next) => {
   }
 });
 
-router.delete("/:userid", basic, async (req, res, next) => {
+router.delete("/:userid", auth, async (req, res, next) => {
   try {
     let user = await User.destroy({
       where: {

@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const { join } = require("path");
 const endpoints = require('express-list-endpoints')
 
 const housesRoute = require('./services/houses')

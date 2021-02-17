@@ -21,6 +21,8 @@ module.exports = (sequelize, DataTypes) => {
       },
       email: {
         type: DataTypes.STRING,
+        unique: true,
+        allowNull: false
       },
       password: {
         type: DataTypes.STRING,
@@ -31,6 +33,10 @@ module.exports = (sequelize, DataTypes) => {
               msg:"Minimum 8 characters required in password"
           }
       }
+      }, 
+      refreshTokens: {
+        type: DataTypes.ARRAY(DataTypes.STRING(1000)),
+       // allowNull: false
       }
     },
     { timestamps: false }
