@@ -26,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       password: {
         type: DataTypes.STRING,
-        allowNull: false,
+        //allowNull: false, NEED TO MAKE THIS MANDATORY IN THE FRONTEND 
         validate:{
           min:{
               args:[8],
@@ -37,6 +37,9 @@ module.exports = (sequelize, DataTypes) => {
       refreshTokens: {
         type: DataTypes.ARRAY(DataTypes.STRING(1000)),
        // allowNull: false
+      },
+      googleId: {
+        type: DataTypes.STRING,
       }
     },
     { timestamps: false }

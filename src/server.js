@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const endpoints = require('express-list-endpoints')
-
+const passport = require('passport')
 const housesRoute = require('./services/houses')
 const reviewsRoute = require('./services/reviews')
 const bookingsRoute = require ('./services/bookings')
@@ -14,6 +14,7 @@ const db = require("./services/utils/db");
 
 server.use(cors())
 server.use(express.json())
+server.use(passport.initialize())
 
 const {
     notFoundHandler,

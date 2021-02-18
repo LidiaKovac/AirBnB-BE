@@ -2,6 +2,26 @@ const { User } = require("../utils/db");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 
+const authenticate = async user => {
+  try {
+    const accessToken = await generateJWT({ id: user.id }) //creates tokens
+    const refreshToken = await generateRefreshJWT({ id: user.id })
+
+    // save new refresh token in db
+    
+    newRefreshTokens = user.refreshTokens.concat(refreshToken)
+    await User.update({refreshTokens: newRefreshTokens}, {where: {
+      id: user.id
+    }})
+
+    // return them
+    return { accessToken, refreshToken }
+  } catch (error) {
+    console.log(error)
+    throw new Error(error)
+  }
+}
+
 const verifyJWT = (token) =>
   new Promise((res, rej) =>
   
@@ -37,27 +57,6 @@ const generateRefreshJWT = (payload) =>
     )
   );
 
-
-
-const auth = async (user) => {
-  try {
-      console.log('starting generation')
-    const newAccessToken = await generateJWT({id: user.id});
-    console.log('starting generation of rt')
-    const newRefreshToken = await generateRefreshJWT({id: user.id});
-    console.log(newRefreshToken)
-    user.refreshTokens = user.refreshTokens.concat(newRefreshToken);
-    await User.update(user, {where: {
-        id: user.id
-    }})
-
-    return { token: newAccessToken, refreshToken: newRefreshToken };
-  } catch (e) {
-    console.log(e)
-    throw new Error(e)
-  }
-};
-
 const findByCredentials = async (req, email, password) => {
   const user = await User.findAll({
     where: {
@@ -74,5 +73,5 @@ const findByCredentials = async (req, email, password) => {
 module.exports = {
   verifyJWT,
   findByCredentials,
-  authentication: auth,
+  authentication: authenticate
 };
